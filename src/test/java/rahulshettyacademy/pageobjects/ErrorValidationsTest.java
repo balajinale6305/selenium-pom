@@ -22,7 +22,7 @@ import rahulshettyacademy.LandingPage;
 import rahulshettyacademy.ProductCatalogue;
 import rahulshettyacademy.TestComponents.BaseTest;
 
-public class ErrorValidations extends BaseTest {
+public class ErrorValidationsTest extends BaseTest {
 
 	
 
@@ -37,7 +37,7 @@ public class ErrorValidations extends BaseTest {
 	public void productErrorValidation() throws InterruptedException, IOException{
 		// TODO Auto-generated method stub
 		String productName = "ZARA COAT 3";
-		ProductCatalogue productCatalogue = landingPage.loginApplication("balajinale1997@gmail.com", "Balaji@6305");
+		ProductCatalogue productCatalogue = landingPage.loginApplication("balajinale17@gmail.com", "Balaji@6305");
 		List<WebElement> products = productCatalogue.getProductList();
 		productCatalogue.addProductToCart(productName);
 		Thread.sleep(2000);
