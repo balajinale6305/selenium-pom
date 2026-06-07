@@ -22,12 +22,19 @@ import rahulshettyacademy.LandingPage;
 import rahulshettyacademy.ProductCatalogue;
 import rahulshettyacademy.TestComponents.BaseTest;
 
-public class StandAloneTest extends BaseTest {
+public class ErrorValidations extends BaseTest {
 
 	
 
 	@Test
-	public void submitOrder() throws InterruptedException, IOException{
+	public void loginErrorValidation() throws InterruptedException, IOException{
+		// TODO Auto-generated method stub
+		String productName = "ZARA COAT 3";
+		landingPage.loginApplication("balaji1997@gmail.com", "xalaji6235");
+		Assert.assertEquals("Incorrect email or password.", landingPage.getErrorMessage());
+	}
+	@Test
+	public void productErrorValidation() throws InterruptedException, IOException{
 		// TODO Auto-generated method stub
 		String productName = "ZARA COAT 3";
 		ProductCatalogue productCatalogue = landingPage.loginApplication("balajinale1997@gmail.com", "Balaji@6305");
@@ -35,15 +42,8 @@ public class StandAloneTest extends BaseTest {
 		productCatalogue.addProductToCart(productName);
 		Thread.sleep(2000);
 		CartPage cartPage = productCatalogue.goToCartPage();
-		Boolean match = cartPage.VerifyProductDisplay(productName);
-		Assert.assertTrue(match);
-		ChcekoutPage checkoutPage = cartPage.goToCheckout();
-		checkoutPage.selectCountry("India");
-		ConfirmationPage confirmationPage = checkoutPage.submitOrder();
-
-		String confirmMessage = confirmationPage.getConfirmationMessage();
-		Assert.assertTrue(confirmMessage.equalsIgnoreCase("THANKYOU FOR THE ORDER"));
+		Boolean match = cartPage.VerifyProductDisplay("ZARA COAT 33");
+		Assert.assertFalse(match);
 
 	}
-
 }
