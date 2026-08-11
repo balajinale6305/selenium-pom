@@ -10,39 +10,32 @@ import org.openqa.selenium.support.PageFactory;
 
 import rahulshettyacademy.AbstactComponents.AbstractComponent;
 
-public class CartPage extends AbstractComponent {
+public class OrderPage extends AbstractComponent {
 
 	WebDriver driver;
 
 //	List <WebElement> cartProducts = driver.findElements(By.cssSelector(".cartSection h3"));
 
-	@FindBy(css= ".cartSection h3")
-	List <WebElement> cartProducts;
+	@FindBy(css= "tr td:nth-child(3)")
+	List <WebElement> productNames;
 	
 //	driver.findElement(By.cssSelector(".totalRow button")).click();
 	
 	@FindBy(css= ".totalRow button")
 	WebElement checkoutEle;
 
-	public CartPage(WebDriver driver) {
+	public OrderPage(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
-	public Boolean VerifyProductDisplay(String productName) {
+	public Boolean VerifyOrdertDisplay(String productName) {
 		
 //		List <WebElement> cartProducts = driver.findElements(By.cssSelector(".cartSection h3"));
-		Boolean match = cartProducts.stream().anyMatch(cartProduct-> cartProduct.getText().equalsIgnoreCase(productName));
+		Boolean match = productNames.stream().anyMatch(cartProduct-> cartProduct.getText().equalsIgnoreCase(productName));
 		return match;
 	}
 	
-	public ChcekoutPage goToCheckout() {
-		
-//		driver.findElement(By.cssSelector(".totalRow button")).click();
-		checkoutEle.click();
-		return new ChcekoutPage(driver);
-		
-	}
 
 }
