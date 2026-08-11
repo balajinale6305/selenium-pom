@@ -23,8 +23,6 @@ public class ExtentReportsDemo {
 		 extent = new ExtentReports();
 		extent.attachReporter(reporter);
 		extent.setSystemInfo("Tester", "Balaji Nale");
-		
-		
 	}
 	
 	
